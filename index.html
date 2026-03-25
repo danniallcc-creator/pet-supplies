@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furrytale Pet Supplies - Premium Export</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="i18n.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .rtl { direction: rtl; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold text-orange-600">Furrytale</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-home hover:text-orange-600 font-semibold" data-i18n="home">Home</a>
+                    <a href="#feeders" class="hover:text-orange-600 font-semibold" data-i18n="feeders">Smart Feeders</a>
+                    <a href="#fountains" class="hover:text-orange-600 font-semibold" data-i18n="fountains">Water Fountains</a>
+                    <a href="#food" class="hover:text-orange-600 font-semibold" data-i18n="food">Pet Food</a>
+                    <a href="#about" class="hover:text-orange-600 font-semibold" data-i18n="about">About</a>
+                    <a href="#contact" class="hover:text-orange-600 font-semibold" data-i18n="contact">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select id="langSelector" class="bg-gray-100 border-none text-sm rounded-md px-2 py-1 focus:ring-orange-500">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="ar">العربية</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-orange-600 text-white py-20 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6" data-i18n="heroTitle">Premium Chinese Pet Products for the Global Market</h1>
+            <p class="text-lg md:text-xl mb-10 opacity-90" data-i18n="heroSub">Innovative design and production for what pets truly want.</p>
+            <a href="#products" class="bg-white text-orange-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition" data-i18n="explore">Explore Products</a>
+        </div>
+    </section>
+
+    <!-- Categories / Products Grid -->
+    <main class="max-w-7xl mx-auto px-4 py-16" id="products">
+        <h2 class="text-3xl font-bold text-center mb-12" data-i18n="featuredProducts">Featured Products</h2>
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Products will be injected by JS -->
+        </div>
+    </main>
+
+    <!-- About Section -->
+    <section id="about" class="bg-white py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8" data-i18n="about">About Us</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6" data-i18n="aboutText">
+                        We are Murui Technology, a leading pet supply and food manufacturer based in China. With over 8,000 m² of factory space and a team of 1,250 members, we produce high-quality pet feeders, fountains, and food for global distribution.
+                    </p>
+                    <p class="font-semibold text-orange-600" data-i18n="certificates">
+                        Certificates: BRC, BSCI, IFS, ISO 22000, MSC, HACCP, GMP, SMETA.
+                    </p>
+                </div>
+                <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                    <span class="text-gray-400">Factory Image Placeholder</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-900 text-white py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8" data-i18n="contact">Contact</h2>
+            <p class="text-xl mb-4" data-i18n="contactEmail">Email: chenyangw828@gmail.com</p>
+            <p class="text-xl opacity-80" data-i18n="contactWechat">WeChat: Chole Ruan / Grace Wang</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-8 border-t">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-600">
+            <p data-i18n="footerText">© 2026 Furrytale Pet Supplies. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let productData = {};
+
+        async function init() {
+            const response = await fetch('data.json');
+            productData = await response.json();
+            renderProducts();
+            updateLanguage('en');
+        }
+
+        function updateLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            document.title = translations[lang].title;
+            
+            // RTL support for Arabic
+            if (lang === 'ar') {
+                document.body.classList.add('rtl');
+            } else {
+                document.body.classList.remove('rtl');
+            }
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = productData.products.map(p => `
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition border overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400">Image: ${p.id}</div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-orange-500 uppercase">${p.category}</span>
+                        <h3 class="text-xl font-bold mt-2">${p.name}</h3>
+                        <ul class="mt-4 space-y-2 text-sm text-gray-600">
+                            ${p.features.map(f => `<li>• ${f}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('langSelector').addEventListener('change', (e) => {
+            updateLanguage(e.target.value);
+        });
+
+        init();
+    </script>
+</body>
+</html>

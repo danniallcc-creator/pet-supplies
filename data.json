@@ -1,0 +1,66 @@
+{
+  "categories": [
+    { "id": "feeders", "en": "Smart Feeders", "es": "Comederos Inteligentes", "fr": "Mangeoires Intelligentes", "de": "Intelligente Futterspender", "ar": "موزعات طعام ذكية" },
+    { "id": "fountains", "en": "Water Fountains", "es": "Fuentes de Agua", "fr": "Fontaines à Eau", "de": "Trinkbrunnen", "ar": "نوافير المياه" },
+    { "id": "food", "en": "Pet Food & Treats", "es": "Comida y Golosinas", "fr": "Nourriture et Friandises", "de": "Tiernahrung & Leckerlis", "ar": "طعام وحلويات الحيوانات" },
+    { "id": "litter", "en": "Cat Litter", "es": "Arena para Gatos", "fr": "Litière pour Chats", "de": "Katzenstreu", "ar": "رمل القطط" }
+  ],
+  "products": [
+    {
+      "id": "F11",
+      "category": "feeders",
+      "name": "Keeper Smart Pet Feeder F11",
+      "features": ["4.5L Capacity", "160° Wide Angle Camera", "Sealed Freshness", "Night Vision"],
+      "pdf": "furrytale PRODUCT CATALOG.pdf"
+    },
+    {
+      "id": "F14",
+      "category": "feeders",
+      "name": "Automatic Feeder F14",
+      "features": ["3L Capacity", "Scientific Feeding", "Voice Recording", "180-Day Battery Life"],
+      "pdf": "furrytale PRODUCT CATALOG.pdf"
+    },
+    {
+      "id": "W4",
+      "category": "fountains",
+      "name": "Cordless Pet Water Fountain W4",
+      "features": ["2.5L Capacity", "5000mAh Battery", "Low Noise (30dB)", "Triple Filtration"],
+      "pdf": "furrytale PRODUCT CATALOG.pdf"
+    },
+    {
+      "id": "W11-S1",
+      "category": "fountains",
+      "name": "Visual Filter Stainless Steel Fountain W11-S1",
+      "features": ["3.2L Capacity", "SUS 304 Stainless Steel", "Visible Water Level", "Transparent Filtration"],
+      "pdf": "furrytale PRODUCT CATALOG.pdf"
+    },
+    {
+      "id": "oven-baked-food",
+      "category": "food",
+      "name": "Oven Baked Pet Food",
+      "features": ["Complete & Balanced", "No Wheat/Corn/Soy", "No Meat Meal", "No Artificial Flavours"],
+      "pdf": "PETFOOD_ENG_2025.pdf"
+    },
+    {
+      "id": "creamy-puree",
+      "category": "food",
+      "name": "Creamy Puree Treats",
+      "features": ["Multiple Flavors (Chicken, Tuna, Salmon)", "Insoluble Puree", "Nutri+ High Digestibility"],
+      "pdf": "PETFOOD_ENG_2025.pdf"
+    },
+    {
+      "id": "cassava-litter",
+      "category": "litter",
+      "name": "Cassava Cat Litter",
+      "features": ["Strong Clumping", "Dust-Free", "Soluble in Water", "Environmental Protection"],
+      "pdf": "furrytale PRODUCT CATALOG.pdf"
+    },
+    {
+      "id": "tofu-litter",
+      "category": "litter",
+      "name": "Occult Blood Test Tofu Cat Litter",
+      "features": ["Color Change Detection", "Detects 0.1% Hemoglobin", "Health Surveillance", "Natural Ingredients"],
+      "pdf": "furrytale PRODUCT CATALOG.pdf"
+    }
+  ]
+}
